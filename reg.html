@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+        <style>
+            .html{
+                width:100vw;
+                height: 100%;
+            }
+            body{
+                width:100%;
+                height: 100vh;
+                margin:0;
+                background-color: #f4f4f6;
+                font-family: 'Readex Pro', sans-serif;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #k{
+                background-color: #ffffff;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap:20px;
+            }
+            #l{
+                background: linear-gradient(to right,#2193b0,#6dd5ed);
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                color:#fff3f0;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+            }
+            #l footer{
+                position: absolute;
+                bottom:0;
+                font-size:3rem;
+                margin-bottom:40px;
+            }
+            #l footer i{
+                border-radius: 50%;
+                border:1px solid #f2f2f2;
+                width:70px;
+                height:70px;
+                display:inline-flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            #l h1{
+                font-size:4.5rem!important;
+                text-align: center;
+                padding: 0px 40px 0 40px;
+                text-shadow: 0 0 4px black;
+                margin-top:0;
+                margin-bottom:0;
+            }
+            #k input{
+                border-radius:4px;
+                height:50px;
+                color:white;
+                background-color: #eeeeee;
+                border:0;
+                width:70%;
+                padding-right:50px;
+                font-family: inherit;
+                font-size:1.5rem;
+                text-align: end;
+                color:black;
+            }
+            section{
+                display:flex;
+                box-shadow:5px 5px 60px #9b9b9b;
+                border-radius: 10px;
+            }
+            section > div{
+                flex-basis: 50%;
+            }
+            img{
+                position:fixed;
+                top:0;
+                height:40%;
+            }
+            #l i:hover{
+                background-color: white;
+                color:blue;
+            }
+            #but{
+                background-color: #2193b0;
+                color:white;
+                text-shadow: 0px 0px 3px black;
+                height: fit-content;
+                padding:10px 40px 10px 40px;
+                border-radius:50px;
+                font-size:2.5rem;
+                margin-top:20px;
+                cursor: pointer;
+            }
+            #l div:hover{
+                    background-color: white!important;
+                    color:black;
+                }
+            @media(max-width:1975px){
+                #l h1{
+                    font-size: 4.5rem!important;
+                }
+            }
+            @media(max-width:1600px){
+                #l h1{
+                    font-size:3.5rem!important;
+                }
+                section{
+                    width:80%;
+                }
+                #l div{
+                    margin-top:20px!important;
+                }
+            }
+            @media(max-width:670px){
+                section{
+                    flex-direction: column;
+                }
+                #but{
+                    margin-top:10px;
+                    margin-bottom:20px;
+                }
+                #l h1{
+                    display:none;
+                }
+                #l footer{
+                    display:none;
+                }
+                #l{
+                    border-bottom-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                }
+                #k{
+                    border-top-right-radius: 10px;
+                    border-top-left-radius: 10px;
+                }
+            }
+            @media(max-width:1000px){
+                footer{
+                    margin-bottom:10px!important;
+                }
+            }
+            ol{
+                display:flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap:20px;
+                font-size:4rem;
+                width:70vw;
+                background: linear-gradient(to right,#2193b0,#6dd5ed);;
+                box-shadow: 5px 5px 60px #9b9b9b;
+                padding:70px;
+                border-radius: 10px;
+                position: relative;
+            }
+            ol span{
+                position: absolute;
+                top:10px;
+                right:10px;
+                font-size:1rem;
+                width:50px;
+                height:fit-content;
+                font-size:3rem;
+                border:1px solid white;
+                border-radius:50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor:pointer;
+                color:white;
+            }
+            ol li{
+                border-radius:15px;
+                background-color:transparent;
+                padding:20px 30px 20px 30px;
+                text-shadow: 0px 0px 3px black;
+                text-align: center;
+                color:white;
+                border:1px solid #f2f2f2;
+                text-shadow: 0 0 4px black;
+                transition: 0.6s;
+            }
+            .hidden{
+                display:none!important;
+            }
+            li:hover{
+                background-color: white;
+                color:black;
+                text-shadow: 0 0 4px white;
+            }
+            @media(max-width:1350px){
+                ol{
+                    font-size:3rem;
+                }
+            }
+            @media(max-width:830px){
+                ol{
+                    font-size:2.2rem;
+                    margin:0px 50px 0px 50px;
+                }
+            }
+            @media(max-width:510px){
+                ol{
+                    font-size:1.5rem;
+                    padding:35px;
+                }
+            }
+            ol span:hover{
+                color:red;
+                border:1px solid red;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <section>
+            <div id="k">
+                <h1 style="font-size:4rem;text-align:center;padding:0px 15px 0px 15px">سجل بياناتك</h1>
+                <input type="number" placeholder="عدد المواد">
+                <input type="number" placeholder="عدد الفترات الدراسية">
+                <article id="but">دخول</article>
+            </div>
+            <div id="l">
+                <h1 style="font-size:2rem;">أنشئ جداولك الجامعية بسهولة</h1>
+                <div style="text-align: center;cursor:pointer;height:fit-content;border-radius:50px;background-color:transparent;border:1px solid #f2f2f2;font-size:3rem;padding:10px 30px 10px 30px;margin:40px 10px 20px 10px;">كيف يعمل</div>
+                <footer>
+                    <i class="fa fa-facebook-f"></i>
+                    <i class="fa fa-linkedin"></i>
+                </footer>
+            </div>
+        </section>
+        <ol class="hidden">
+            <span><i class="fa fa-close"></i></span>
+            <li>سجل بياناتك</li>
+            <li>قم بملأ جدول كل مادة بالأيام والأوقات المتاحة</li>
+            <li>إضغط على زر تسجيل المواد</li>
+            <li>يظهر لك جدول عشوائي في كل مرة</li>
+        </ol>
+        <script>
+            document.querySelector('section').querySelectorAll('div')[1].style =`height:${document.querySelector('section').querySelectorAll('div')[1].clientWidth}px` 
+            document.querySelector('#but').addEventListener('click',()=>{
+                if(document.querySelectorAll('input')[0].value!=''&&document.querySelectorAll('input')[1].value!=''){
+                    localStorage.setItem('subs',document.querySelectorAll('input')[0].value)
+                    localStorage.setItem('times',document.querySelectorAll('input')[1].value)
+                    location.replace('./index.html');
+                }
+            })
+            document.querySelectorAll('i')[0].addEventListener('click',()=>{
+                open('https://www.facebook.com/profile.php?id=100010688892597')
+            })
+            document.querySelectorAll('i')[1].addEventListener('click',()=>{
+                open('https://www.linkedin.com/in/mahmoud-bahaa-482117228/')
+            })
+            document.querySelector('#l').querySelector('div').addEventListener('click',()=>{
+                document.querySelector('ol').classList.remove('hidden')
+                document.querySelector('section').classList.add('hidden')
+            })
+            document.querySelector('ol').querySelector('span').addEventListener('click',()=>{
+                document.querySelector('ol').classList.add('hidden')
+                document.querySelector('section').classList.remove('hidden')
+            })
+        </script>
+    </body>
+</html>
