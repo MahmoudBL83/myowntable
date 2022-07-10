@@ -219,10 +219,30 @@
                     font-size:1.5rem;
                     padding:35px;
                 }
+                #l div{
+                    font-size:2rem!important;
+                }
+                #k h1{
+                    font-size:3rem!important;
+                }
+                #but{
+                    font-size: 2rem!important;
+                }
+                #k input{
+                    padding:5px;
+                }
             }
             ol span:hover{
                 color:red;
                 border:1px solid red;
+            }
+            @keyframes spin {
+                from {
+                    transform:rotate(0deg);
+                }
+                to {
+                    transform:rotate(360deg);
+                }
             }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -261,7 +281,7 @@
                 if(document.querySelectorAll('input')[0].value!=''&&document.querySelectorAll('input')[1].value!=''){
                     localStorage.setItem('subs',document.querySelectorAll('input')[0].value)
                     localStorage.setItem('times',document.querySelectorAll('input')[1].value)
-                    location.replace('./reg2.html');
+                    location.replace('./index.html');
                 }
             })
             document.querySelectorAll('i')[0].addEventListener('click',()=>{
