@@ -26,7 +26,7 @@ let days = document.querySelectorAll('.days');
 let but = document.querySelector('button');
 
 document.querySelector('header').querySelector('div').addEventListener('click',()=>{
-    location.replace('./index.html')
+    location.replace('./')
 })
 
 /* The main function to build the tables */
