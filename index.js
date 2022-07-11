@@ -1,8 +1,9 @@
-/* Creating inputs filed according to subjects jumber */
+/* Creating inputs filed according to subjects number */
 for(let i=1;i<localStorage.getItem('subs');i++){
     document.querySelector('#inputs').appendChild(document.querySelector('.sub1').cloneNode(true))
 }
 
+/* Creating radion inputs according to studying times number */
 document.querySelectorAll('.days').forEach((x)=>{
     for(let i=0;i<x.querySelectorAll('div').length;i++){
         if(i==0){
@@ -10,7 +11,8 @@ document.querySelectorAll('.days').forEach((x)=>{
             for(let n = 0;n<=localStorage.getItem('times');n++){
                 u[n].classList.remove('hidden')
             }
-        }else{
+        }
+        else{
             let u = x.querySelectorAll('div')[i].querySelectorAll('input');
             for(let n = 0;n<localStorage.getItem('times');n++){
                 u[n].classList.remove('hidden')
@@ -24,9 +26,11 @@ let tableSec = document.querySelector('#tables');
 let labels = document.querySelectorAll('label');
 let days = document.querySelectorAll('.days');
 let but = document.querySelector('button');
+let arr = ['الفترة الأولي','الفترة الثانية','الفترة الثالثة','الفترة الرابعة','الفترة الخامسة','الفترة السادسة','الفترة السابعة','الفترة الثامنة','الفترة التاسعة','الفترة العاشرة']
 
+/* Log out */
 document.querySelector('header').querySelector('div').addEventListener('click',()=>{
-    location.replace('./')
+    location.replace('./reg.html')
 })
 
 /* The main function to build the tables */
@@ -47,26 +51,6 @@ function myFunc(){
     }
 
     /* Global variables */
-    let sub1availableDays = [];
-    let sub2availableDays = [];
-    let sub3availableDays = [];
-    let sub4availableDays = [];
-    let sub5availableDays = [];
-    let sub6availableDays = [];
-    let sub7availableDays = [];
-    let sub8availableDays = [];
-    let sub9availableDays = [];
-    let sub10availableDays = [];
-    let sub11availableDays = [];
-    let sub12availableDays = [];
-    let sub13availableDays = [];
-    let sub14availableDays = [];
-    let sub15availableDays = [];
-    let sub16availableDays = [];
-    let sub17availableDays = [];
-    let sub18availableDays = [];
-    let sub19availableDays = [];
-    let sub20availableDays = [];
     let sat1 =[]
     let sat2 = []
     let sat3 = []
@@ -127,37 +111,18 @@ function myFunc(){
     let thurs8 = []
     let thurs9 = []
     let thurs10 = []
+    let allAvailableDays =[]
     /* Days for each subject */
-    days.forEach((x,i)=>{
+    days.forEach((x)=>{
+        let avilableDays = []
         x.querySelectorAll('input').forEach((y)=>{
             if(y.checked == true){
-                if(i==0)
-                sub1availableDays.push(y.value);
-                if(i==1)
-                sub2availableDays.push(y.value);
-                if(i==2)
-                sub3availableDays.push(y.value);
-                if(i==3)
-                sub4availableDays.push(y.value);
-                if(i==4)
-                sub5availableDays.push(y.value);
-                if(i==5)
-                sub6availableDays.push(y.value);
-                if(i==6)
-                sub7availableDays.push(y.value);
-                if(i==7)
-                sub8availableDays.push(y.value);
-                if(i==8)
-                sub9availableDays.push(y.value);
-                if(i==9)
-                sub10availableDays.push(y.value);
-                if(i==10)
-                sub11availableDays.push(y.value);
+                avilableDays.push(y.value)
             }
         })
+        allAvailableDays.push(avilableDays)
     })
-    let j = [sub1availableDays,sub2availableDays,sub3availableDays,sub4availableDays,sub5availableDays,sub6availableDays,sub7availableDays,sub8availableDays,sub9availableDays,sub10availableDays,sub11availableDays,sub12availableDays,sub13availableDays,sub14availableDays,sub15availableDays,sub16availableDays,sub17availableDays,sub18availableDays,sub19availableDays,sub20availableDays];
-    j.forEach((y,i)=>{
+    allAvailableDays.forEach((y,i)=>{
         y.forEach((x)=>{
             if(x == 'السبت الفترة الأولي')
             sat1.push(labels[i].querySelector('input').value)
@@ -287,150 +252,11 @@ function myFunc(){
     let table = document.createElement('table');
     table.innerHTML = '<tr> <th>الموعد</th> <th>السبت</th> <th>الأحد</th> <th>الإثنين</th> <th>الثلاثاء</th> <th>الأربعاء</th> <th>الخميس</th></tr>';
     for(let i=0;i<parseInt(localStorage.getItem('times'));i++){
-        if(i==0){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الأولى</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==1){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الثانية</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==2){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الثالثة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==3){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الرابعة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==4){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الخامسة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==5){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة السادسة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==6){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة السابعة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==7){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة الثامنة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==8){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة التاسعة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
-        if(i==9){
-            let u =document.createElement('tr')
-            u.innerHTML = `<td>الفترة العاشرة</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
-            table.appendChild(u)
-        }
+        let u =document.createElement('tr')
+        u.innerHTML = `<td>${arr[i]}</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
+        table.appendChild(u)
     }
-    /*table.querySelectorAll('tr').forEach((e,i)=>{
-        if(i==1){
-            table.querySelectorAll('tr')[i].innerHTML=``
-        }
-        if(i==2){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة الثانية</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==3){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة الثالثة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==4){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة الرابعة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==5){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة الخامسة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==6){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة السادسة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==7){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة السابعة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==8){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة الثامنة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==9){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة التاسعة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-        if(i==10){
-            table.querySelectorAll('tr')[i].innerHTML=`<td>الفترة العاشرة</td><td id="sat${i}">-</td> <td id="sun${i}">-</td> <td id="mon${i}">-</td> <td id="tues${i}">-</td> <td id="wedn${i}">-</td> <td id="thurs${i}">-</td> `
-        }
-    })*/
     document.querySelector('#tables').appendChild(table)
-    let sat1p = sat1.length
-    let sat2p = sat2.length
-    let sat3p = sat3.length
-    let sat4p = sat4.length
-    let sat5p = sat5.length
-    let sat6p = sat6.length
-    let sat7p = sat7.length
-    let sat8p = sat8.length
-    let sat9p = sat9.length
-    let sat10p = sat10.length
-    let sun1p = sun1.length
-    let sun2p = sun2.length
-    let sun3p = sun3.length
-    let sun4p = sun4.length
-    let sun5p = sun5.length
-    let sun6p = sun6.length
-    let sun7p = sun7.length
-    let sun8p = sun8.length
-    let sun9p = sun9.length
-    let sun10p = sun10.length
-    let mon1p = mon1.length
-    let mon2p = mon2.length
-    let mon3p = mon3.length
-    let mon4p = mon4.length
-    let mon5p = mon5.length
-    let mon6p = mon6.length
-    let mon7p = mon7.length
-    let mon8p = mon8.length
-    let mon9p = mon9.length
-    let mon10p = mon10.length
-    let tues1p = tues1.length
-    let tues2p = tues2.length
-    let tues3p = tues3.length
-    let tues4p = tues4.length
-    let tues5p = tues5.length
-    let tues6p = tues6.length
-    let tues7p = tues7.length
-    let tues8p = tues8.length
-    let tues9p = tues9.length
-    let tues10p = tues10.length
-    let wedn1p = wedn1.length
-    let wedn2p = wedn2.length
-    let wedn3p = wedn3.length
-    let wedn4p = wedn4.length
-    let wedn5p = wedn5.length
-    let wedn6p = wedn6.length
-    let wedn7p = wedn7.length
-    let wedn8p = wedn8.length
-    let wedn9p = wedn9.length
-    let wedn10p = wedn10.length
-    let thurs1p = thurs1.length
-    let thurs2p = thurs2.length
-    let thurs3p = thurs3.length
-    let thurs4p = thurs4.length
-    let thurs5p = thurs5.length
-    let thurs6p = thurs6.length
-    let thurs7p = thurs7.length
-    let thurs8p = thurs8.length
-    let thurs9p = thurs9.length
-    let thurs10p = thurs10.length
     let gay = []
     /*random1(sat1p,'#sat1',sat1)
     random1(sat2p,'#sat2',sat2)
@@ -462,7 +288,7 @@ function myFunc(){
         v[i]();
     }
     function random1(){
-        let random = Math.floor(Math.random() * (sat1p))
+        let random = Math.floor(Math.random() * (sat1.length))
         if(gay.includes(sat1[random])==false){
             if(document.querySelector('#sat1')!=null){
                 document.querySelector('#sat1').innerHTML = sat1[random];
@@ -472,7 +298,7 @@ function myFunc(){
         }
     }
     function random2(){
-        let random = Math.floor(Math.random() * (sat2p))
+        let random = Math.floor(Math.random() * (sat2.length))
         if(gay.includes(sat2[random])==false){
             if(document.querySelector('#sat2')!=null){
                 document.querySelector('#sat2').innerHTML = sat2[random];
@@ -482,7 +308,7 @@ function myFunc(){
         }
     }
     function random3(){
-        let random = Math.floor(Math.random() * (sat3p))
+        let random = Math.floor(Math.random() * (sat3.length))
         if(gay.includes(sat3[random])==false){
             if(document.querySelector('#sat3')!=null){
                 document.querySelector('#sat3').innerHTML = sat3[random];
@@ -492,7 +318,7 @@ function myFunc(){
         }
     }
     function random4(){
-        let random = Math.floor(Math.random() * (sat4p))
+        let random = Math.floor(Math.random() * (sat4.length))
         if(gay.includes(sat4[random])==false){
             if(document.querySelector('#sat4')!=null){
                 document.querySelector('#sat4').innerHTML = sat4[random];
@@ -502,7 +328,7 @@ function myFunc(){
         }
     }
     function random5(){
-        let random = Math.floor(Math.random() * (sat5p))
+        let random = Math.floor(Math.random() * (sat5.length))
         if(gay.includes(sat5[random])==false){
             if(document.querySelector('#sat5')!=null){
                 document.querySelector('#sat5').innerHTML = sat5[random];
@@ -512,7 +338,7 @@ function myFunc(){
         }
     }
     function random6(){
-        let random = Math.floor(Math.random() * (sat6p))
+        let random = Math.floor(Math.random() * (sat6.length))
         if(gay.includes(sat6[random])==false){
             if(document.querySelector('#sat6')!=null){
                 document.querySelector('#sat6').innerHTML = sat6[random];
@@ -522,7 +348,7 @@ function myFunc(){
         }
     }
     function random7(){
-        let random = Math.floor(Math.random() * (sat7p))
+        let random = Math.floor(Math.random() * (sat7.length))
         if(gay.includes(sat7[random])==false){
             if(document.querySelector('#sat7')!=null){
                 document.querySelector('#sat7').innerHTML = sat7[random];
@@ -532,7 +358,7 @@ function myFunc(){
         }
     }
     function random8(){
-        let random = Math.floor(Math.random() * (sat8p))
+        let random = Math.floor(Math.random() * (sat8.length))
         if(gay.includes(sat8[random])==false){
             if(document.querySelector('#sat8')!=null){
                 document.querySelector('#sat8').innerHTML = sat8[random];
@@ -542,7 +368,7 @@ function myFunc(){
         }
     }
     function random9(){
-        let random = Math.floor(Math.random() * (sat9p))
+        let random = Math.floor(Math.random() * (sat9.length))
         if(gay.includes(sat9[random])==false){
             if(document.querySelector('#sat9')!=null){
                 document.querySelector('#sat9').innerHTML = sat9[random];
@@ -552,7 +378,7 @@ function myFunc(){
         }
     }
     function random10(){
-        let random = Math.floor(Math.random() * (sat10p))
+        let random = Math.floor(Math.random() * (sat10.length))
         if(gay.includes(sat10[random])==false){
             if(document.querySelector('#sat10')!=null){
                 document.querySelector('#sat10').innerHTML = sat10[random];
@@ -562,7 +388,7 @@ function myFunc(){
         }
     }
     function random11(){
-        let random = Math.floor(Math.random() * (sun1p))
+        let random = Math.floor(Math.random() * (sun1.length))
         if(gay.includes(sun1[random])==false){
             if(document.querySelector('#sun1')!=null){
                 document.querySelector('#sun1').innerHTML = sun1[random];
@@ -572,7 +398,7 @@ function myFunc(){
         }
     }
     function random12(){
-        let random = Math.floor(Math.random() * (sun2p))
+        let random = Math.floor(Math.random() * (sun2.length))
         if(gay.includes(sun2[random])==false){
             if(document.querySelector('#sun2')!=null){
                 document.querySelector('#sun2').innerHTML = sun2[random];
@@ -582,7 +408,7 @@ function myFunc(){
         }
     }
     function random13(){
-        let random = Math.floor(Math.random() * (sun3p))
+        let random = Math.floor(Math.random() * (sun3.length))
         if(gay.includes(sun3[random])==false){
             if(document.querySelector('#sun3')!=null){
                 document.querySelector('#sun3').innerHTML = sun3[random];
@@ -592,7 +418,7 @@ function myFunc(){
         }
     }
     function random14(){
-        let random = Math.floor(Math.random() * (sun4p))
+        let random = Math.floor(Math.random() * (sun4.length))
         if(gay.includes(sun4[random])==false){
             if(document.querySelector('#sun4')!=null){
                 document.querySelector('#sun4').innerHTML = sun4[random];
@@ -602,7 +428,7 @@ function myFunc(){
         }
     }
     function random15(){
-        let random = Math.floor(Math.random() * (sun5p))
+        let random = Math.floor(Math.random() * (sun5.length))
         if(gay.includes(sun5[random])==false){
             if(document.querySelector('#sun5')!=null){
                 document.querySelector('#sun5').innerHTML = sun5[random];
@@ -612,7 +438,7 @@ function myFunc(){
         }
     }
     function random16(){
-        let random = Math.floor(Math.random() * (sun6p))
+        let random = Math.floor(Math.random() * (sun6.length))
         if(gay.includes(sun6[random])==false){
             if(document.querySelector('#sun6')!=null){
             document.querySelector('#sun6').innerHTML = sun6[random];
@@ -622,7 +448,7 @@ function myFunc(){
         }
     }
     function random17(){
-        let random = Math.floor(Math.random() * (sun7p))
+        let random = Math.floor(Math.random() * (sun7.length))
         if(gay.includes(sun7[random])==false){
             if(document.querySelector('#sun7')!=null){
             document.querySelector('#sun7').innerHTML = sun7[random];
@@ -632,7 +458,7 @@ function myFunc(){
         }
     }
     function random18(){
-        let random = Math.floor(Math.random() * (sun8p))
+        let random = Math.floor(Math.random() * (sun8.length))
         if(gay.includes(sun8[random])==false){
             if(document.querySelector('#sun8')!=null){
             document.querySelector('#sun8').innerHTML = sun8[random];
@@ -642,7 +468,7 @@ function myFunc(){
         }
     }
     function random19(){
-        let random = Math.floor(Math.random() * (sun9p))
+        let random = Math.floor(Math.random() * (sun9.length))
         if(gay.includes(sun9[random])==false){
             if(document.querySelector('#sun9')!=null){
             document.querySelector('#sun9').innerHTML = sun9[random];
@@ -652,7 +478,7 @@ function myFunc(){
         }
     }
     function random20(){
-        let random = Math.floor(Math.random() * (sun10p))
+        let random = Math.floor(Math.random() * (sun10.length))
         if(gay.includes(sun10[random])==false){
             if(document.querySelector('#sun10')!=null){
             document.querySelector('#sun10').innerHTML = sun10[random];
@@ -662,7 +488,7 @@ function myFunc(){
         }
     }
     function random21(){
-        let random = Math.floor(Math.random() * (mon1p))
+        let random = Math.floor(Math.random() * (mon1.length))
         if(gay.includes(mon1[random])==false){
             if(document.querySelector('#mon1')!=null){
             document.querySelector('#mon1').innerHTML = mon1[random];
@@ -672,7 +498,7 @@ function myFunc(){
         }
     }
     function random22(){
-        let random = Math.floor(Math.random() * (mon2p))
+        let random = Math.floor(Math.random() * (mon2.length))
         if(gay.includes(mon2[random])==false){
             if(document.querySelector('#mon2')!=null){
                 document.querySelector('#mon2').innerHTML = mon2[random];
@@ -682,7 +508,7 @@ function myFunc(){
         }
     }
     function random23(){
-        let random = Math.floor(Math.random() * (mon3p))
+        let random = Math.floor(Math.random() * (mon3.length))
         if(gay.includes(mon3[random])==false){
             if(document.querySelector('#mon3')!=null){
                 document.querySelector('#mon3').innerHTML = mon3[random];
@@ -692,7 +518,7 @@ function myFunc(){
         }
     }
     function random24(){
-        let random = Math.floor(Math.random() * (mon4p))
+        let random = Math.floor(Math.random() * (mon4.length))
         if(gay.includes(mon4[random])==false){
             if(document.querySelector('#mon4')!=null){
                 document.querySelector('#mon4').innerHTML = mon4[random];
@@ -702,7 +528,7 @@ function myFunc(){
         }
     }
     function random25(){
-        let random = Math.floor(Math.random() * (mon5p))
+        let random = Math.floor(Math.random() * (mon5.length))
         if(gay.includes(mon5[random])==false){
             if(document.querySelector('#mon5')!=null){
                 document.querySelector('#mon5').innerHTML = mon5[random];
@@ -712,7 +538,7 @@ function myFunc(){
         }
     }
     function random26(){
-        let random = Math.floor(Math.random() * (mon6p))
+        let random = Math.floor(Math.random() * (mon6.length))
         if(gay.includes(mon6[random])==false){
             if(document.querySelector('#mon6')!=null){
                 document.querySelector('#mon6').innerHTML = mon6[random];
@@ -722,7 +548,7 @@ function myFunc(){
         }
     }
     function random27(){
-        let random = Math.floor(Math.random() * (mon7p))
+        let random = Math.floor(Math.random() * (mon7.length))
         if(gay.includes(mon7[random])==false){
             if(document.querySelector('#mon7')!=null){
                 document.querySelector('#mon7').innerHTML = mon7[random];
@@ -732,7 +558,7 @@ function myFunc(){
         }
     }
     function random28(){
-        let random = Math.floor(Math.random() * (mon8p))
+        let random = Math.floor(Math.random() * (mon8.length))
         if(gay.includes(mon8[random])==false){
             if(document.querySelector('#mon8')!=null){
                 document.querySelector('#mon8').innerHTML = mon8[random];
@@ -742,7 +568,7 @@ function myFunc(){
         }
     }
     function random29(){
-        let random = Math.floor(Math.random() * (mon9p))
+        let random = Math.floor(Math.random() * (mon9.length))
         if(gay.includes(mon9[random])==false){
             if(document.querySelector('#mon9')!=null){
                 document.querySelector('#mon9').innerHTML = mon9[random];
@@ -752,7 +578,7 @@ function myFunc(){
         }
     }
     function random30(){
-        let random = Math.floor(Math.random() * (mon10p))
+        let random = Math.floor(Math.random() * (mon10.length))
         if(gay.includes(mon10[random])==false){
             if(document.querySelector('#mon10')!=null){
                 document.querySelector('#mon10').innerHTML = mon10[random];
@@ -762,7 +588,7 @@ function myFunc(){
         }
     }
     function random31(){
-        let random = Math.floor(Math.random() * (tues1p))
+        let random = Math.floor(Math.random() * (tues1.length))
         if(gay.includes(tues1[random])==false){
             if(document.querySelector('#tues1')!=null){
                 document.querySelector('#tues1').innerHTML = tues1[random];
@@ -772,7 +598,7 @@ function myFunc(){
         }
     }
     function random32(){
-        let random = Math.floor(Math.random() * (tues2p))
+        let random = Math.floor(Math.random() * (tues2.length))
         if(gay.includes(tues2[random])==false){
             if(document.querySelector('#tues2')!=null){
                 document.querySelector('#tues2').innerHTML = tues2[random];
@@ -782,7 +608,7 @@ function myFunc(){
         }
     }
     function random33(){
-        let random = Math.floor(Math.random() * (tues3p))
+        let random = Math.floor(Math.random() * (tues3.length))
         if(gay.includes(tues3[random])==false){
             if(document.querySelector('#tues3')!=null){
                 document.querySelector('#tues3').innerHTML = tues3[random];
@@ -792,7 +618,7 @@ function myFunc(){
         }
     }
     function random34(){
-        let random = Math.floor(Math.random() * (tues4p))
+        let random = Math.floor(Math.random() * (tues4.length))
         if(gay.includes(tues4[random])==false){
             if(document.querySelector('#tues4')!=null){
             document.querySelector('#tues4').innerHTML = tues4[random];
@@ -802,7 +628,7 @@ function myFunc(){
         }
     }
     function random35(){
-        let random = Math.floor(Math.random() * (tues5p))
+        let random = Math.floor(Math.random() * (tues5.length))
         if(gay.includes(tues5[random])==false){
             if(document.querySelector('#tues5')!=null){
                 document.querySelector('#tues5').innerHTML = tues5[random];
@@ -812,7 +638,7 @@ function myFunc(){
         }
     }
     function random36(){
-        let random = Math.floor(Math.random() * (tues6p))
+        let random = Math.floor(Math.random() * (tues6.length))
         if(gay.includes(tues6[random])==false){
             if(document.querySelector('#tues6')!=null){
                 document.querySelector('#tues6').innerHTML = tues6[random];
@@ -822,7 +648,7 @@ function myFunc(){
         }
     }
     function random37(){
-        let random = Math.floor(Math.random() * (tues7p))
+        let random = Math.floor(Math.random() * (tues7.length))
         if(gay.includes(tues7[random])==false){
             if(document.querySelector('#tues7')!=null){
                 document.querySelector('#tues7').innerHTML = tues7[random];
@@ -832,7 +658,7 @@ function myFunc(){
         }
     }
     function random38(){
-        let random = Math.floor(Math.random() * (tues8p))
+        let random = Math.floor(Math.random() * (tues8.length))
         if(gay.includes(tues8[random])==false){
             if(document.querySelector('#tues8')!=null){
                 document.querySelector('#tues8').innerHTML = tues8[random];
@@ -842,7 +668,7 @@ function myFunc(){
         }
     }
     function random39(){
-        let random = Math.floor(Math.random() * (tues9p))
+        let random = Math.floor(Math.random() * (tues9.length))
         if(gay.includes(tues9[random])==false){
             if(document.querySelector('#tues9')!=null){
                 document.querySelector('#tues9').innerHTML = tues9[random];
@@ -852,7 +678,7 @@ function myFunc(){
         }
     }
     function random40(){
-        let random = Math.floor(Math.random() * (tues10p))
+        let random = Math.floor(Math.random() * (tues10.length))
         if(gay.includes(tues10[random])==false){
             if(document.querySelector('#tues10')!=null){
                 document.querySelector('#tues10').innerHTML = tues10[random];
@@ -862,7 +688,7 @@ function myFunc(){
         }
     }
     function random41(){
-        let random = Math.floor(Math.random() * (wedn1p))
+        let random = Math.floor(Math.random() * (wedn1.length))
         if(gay.includes(wedn1[random])==false){
             if(document.querySelector('#wedn1')!=null){
                 document.querySelector('#wedn1').innerHTML = wedn1[random];
@@ -872,7 +698,7 @@ function myFunc(){
         }
     }
     function random42(){
-        let random = Math.floor(Math.random() * (wedn2p))
+        let random = Math.floor(Math.random() * (wedn2.length))
         if(gay.includes(wedn2[random])==false){
             if(document.querySelector('#wedn2')!=null){
                 document.querySelector('#wedn2').innerHTML = wedn2[random];
@@ -882,7 +708,7 @@ function myFunc(){
         }
     }
     function random43(){
-        let random = Math.floor(Math.random() * (wedn3p))
+        let random = Math.floor(Math.random() * (wedn3.length))
         if(gay.includes(wedn3[random])==false){
             if(document.querySelector('#wedn3')!=null){
                 document.querySelector('#wedn3').innerHTML = wedn3[random];
@@ -892,7 +718,7 @@ function myFunc(){
         }
     }
     function random44(){
-        let random = Math.floor(Math.random() * (wedn4p))
+        let random = Math.floor(Math.random() * (wedn4.length))
         if(gay.includes(wedn4[random])==false){
             if(document.querySelector('#wedn4')!=null){
                 document.querySelector('#wedn4').innerHTML = wedn4[random];
@@ -902,7 +728,7 @@ function myFunc(){
         }
     }
     function random45(){
-        let random = Math.floor(Math.random() * (wedn5p))
+        let random = Math.floor(Math.random() * (wedn5.length))
         if(gay.includes(wedn5[random])==false){
             if(document.querySelector('#wedn5')!=null){
                 document.querySelector('#wedn5').innerHTML = wedn5[random];
@@ -912,7 +738,7 @@ function myFunc(){
         }
     }
     function random46(){
-        let random = Math.floor(Math.random() * (wedn6p))
+        let random = Math.floor(Math.random() * (wedn6.length))
         if(gay.includes(wedn6[random])==false){
             if(document.querySelector('#wedn6')!=null){
                 document.querySelector('#wedn6').innerHTML = wedn6[random];
@@ -922,7 +748,7 @@ function myFunc(){
         }
     }
     function random47(){
-        let random = Math.floor(Math.random() * (wedn7p))
+        let random = Math.floor(Math.random() * (wedn7.length))
         if(gay.includes(wedn7[random])==false){
             if(document.querySelector('#wedn7')!=null){
                 document.querySelector('#wedn7').innerHTML = wedn7[random];
@@ -932,7 +758,7 @@ function myFunc(){
         }
     }
     function random48(){
-        let random = Math.floor(Math.random() * (wedn8p))
+        let random = Math.floor(Math.random() * (wedn8.length))
         if(gay.includes(wedn8[random])==false){
             if(document.querySelector('#wedn8')!=null){
                 document.querySelector('#wedn8').innerHTML = wedn8[random];
@@ -942,7 +768,7 @@ function myFunc(){
         }
     }
     function random49(){
-        let random = Math.floor(Math.random() * (wedn9p))
+        let random = Math.floor(Math.random() * (wedn9.length))
         if(gay.includes(wedn9[random])==false){
             if(document.querySelector('#wedn9')!=null){
                 document.querySelector('#wedn9').innerHTML = wedn9[random];
@@ -952,7 +778,7 @@ function myFunc(){
         }
     }
     function random50(){
-        let random = Math.floor(Math.random() * (wedn10p))
+        let random = Math.floor(Math.random() * (wedn10.length))
         if(gay.includes(wedn10[random])==false){
             if(document.querySelector('#wedn10')!=null){
                 document.querySelector('#wedn10').innerHTML = wedn10[random];
@@ -962,7 +788,7 @@ function myFunc(){
         }
     }
     function random51(){
-        let random = Math.floor(Math.random() * (thurs1p))
+        let random = Math.floor(Math.random() * (thurs1.length))
         if(gay.includes(thurs1[random])==false){
             if(document.querySelector('#thurs1')!=null){
                 document.querySelector('#thurs1').innerHTML = thurs1[random];
@@ -972,7 +798,7 @@ function myFunc(){
         }
     }
     function random52(){
-        let random = Math.floor(Math.random() * (thurs2p))
+        let random = Math.floor(Math.random() * (thurs2.length))
         if(gay.includes(thurs2[random])==false){
             if(document.querySelector('#thurs2')!=null){
                 document.querySelector('#thurs2').innerHTML = thurs2[random];
@@ -982,7 +808,7 @@ function myFunc(){
         }
     }
     function random53(){
-        let random = Math.floor(Math.random() * (thurs3p))
+        let random = Math.floor(Math.random() * (thurs3.length))
         if(gay.includes(thurs3[random])==false){
             if(document.querySelector('#thurs3')!=null){
                 document.querySelector('#thurs3').innerHTML = thurs3[random];
@@ -992,7 +818,7 @@ function myFunc(){
         }
     }
     function random54(){
-        let random = Math.floor(Math.random() * (thurs4p))
+        let random = Math.floor(Math.random() * (thurs4.length))
         if(gay.includes(thurs4[random])==false){
             if(document.querySelector('#thurs4')!=null){
                 document.querySelector('#thurs4').innerHTML = thurs4[random];
@@ -1002,7 +828,7 @@ function myFunc(){
         }
     }
     function random55(){
-        let random = Math.floor(Math.random() * (thurs5p))
+        let random = Math.floor(Math.random() * (thurs5.length))
         if(gay.includes(thurs5[random])==false){
             if(document.querySelector('#thurs5')!=null){
                 document.querySelector('#thurs5').innerHTML = thurs5[random];
@@ -1012,7 +838,7 @@ function myFunc(){
         }
     }
     function random56(){
-        let random = Math.floor(Math.random() * (thurs6p))
+        let random = Math.floor(Math.random() * (thurs6.length))
         if(gay.includes(thurs6[random])==false){
             if(document.querySelector('#thurs6')!=null){
                 document.querySelector('#thurs6').innerHTML = thurs6[random];
@@ -1022,7 +848,7 @@ function myFunc(){
         }
     }
     function random57(){
-        let random = Math.floor(Math.random() * (thurs7p))
+        let random = Math.floor(Math.random() * (thurs7.length))
         if(gay.includes(thurs7[random])==false){
             if(document.querySelector('#thurs7')!=null){
                 document.querySelector('#thurs7').innerHTML = thurs7[random];
@@ -1032,7 +858,7 @@ function myFunc(){
         }
     }
     function random58(){
-        let random = Math.floor(Math.random() * (thurs8p))
+        let random = Math.floor(Math.random() * (thurs8.length))
         if(gay.includes(thurs8[random])==false){
             if(document.querySelector('#thurs8')!=null){
                 document.querySelector('#thurs8').innerHTML = thurs8[random];
@@ -1042,34 +868,25 @@ function myFunc(){
         }
     }
     function random59(){
-        let random = Math.floor(Math.random() * (thurs9p))
-        if(gay.includes(tues9[random])==false){
+        let random = Math.floor(Math.random() * (thurs9.length))
+        if(gay.includes(thurs9[random])==false){
             if(document.querySelector('#thurs9')!=null){
-                document.querySelector('#tues9').innerHTML = tues9[random];
-                gay.push(tues9[random])
+                document.querySelector('#tues9').innerHTML = thurs9[random];
+                gay.push(thurs9[random])
             }
             return;
         }
     }
     function random60(){
-        let random = Math.floor(Math.random() * (thurs10p))
-        if(gay.includes(tues10[random])==false){
+        let random = Math.floor(Math.random() * (thurs10.length))
+        if(gay.includes(thurs10[random])==false){
             if(document.querySelector('#thurs10')!=null){
-                document.querySelector('#tues10').innerHTML = tues10[random];
-                gay.push(tues10[random])
+                document.querySelector('#thurs10').innerHTML = thurs10[random];
+                gay.push(thurs10[random])
             }
             return;
         }
     }
-    /*
-    function random4(x,y,z){
-        let random = Math.floor(Math.random() * (sat1p))
-        if(gay.includes(sat1[random])==false){
-            document.querySelector('#sat1').innerHTML = sat1[random];
-            gay.push(sat1[random])
-            return;
-        }
-    }*/
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
     
