@@ -162,7 +162,7 @@
                 gap:20px;
                 font-size:4rem;
                 width:70vw;
-                background: linear-gradient(to right,#2193b0,#6dd5ed);;
+                background: white;
                 box-shadow: 5px 5px 60px #9b9b9b;
                 padding:70px;
                 border-radius: 10px;
@@ -176,24 +176,29 @@
                 width:50px;
                 height:fit-content;
                 font-size:3rem;
-                border:1px solid white;
+                border:1px solid #2193b0;
                 border-radius:50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 cursor:pointer;
-                color:white;
+                color:#2193b0;
             }
             ol li{
                 border-radius:15px;
-                background-color:transparent;
+                background-color:#2193b0;
                 padding:20px 30px 20px 30px;
                 text-shadow: 0px 0px 3px black;
                 text-align: center;
                 color:white;
                 border:1px solid #f2f2f2;
                 text-shadow: 0 0 4px black;
-                transition: 0.6s;
+                transition: 0.3s;
+            }
+            ol li::marker{
+                color:black;
+                text-shadow: none;
+                color:white;
             }
             .hidden{
                 display:none!important;
@@ -279,9 +284,24 @@
             document.querySelector('section').querySelectorAll('div')[1].style =`height:${document.querySelector('section').querySelectorAll('div')[1].clientWidth}px` 
             document.querySelector('#but').addEventListener('click',()=>{
                 if(document.querySelectorAll('input')[0].value!=''&&document.querySelectorAll('input')[1].value!=''){
-                    localStorage.setItem('subs',document.querySelectorAll('input')[0].value)
-                    localStorage.setItem('times',document.querySelectorAll('input')[1].value)
-                    location.replace('./reg2.html');
+                    if(document.querySelectorAll('input')[1].value<=12){
+                        localStorage.setItem('subs',document.querySelectorAll('input')[0].value)
+                        localStorage.setItem('times',document.querySelectorAll('input')[1].value)
+                        location.replace('./page1.html');
+                    }
+                    else{
+                        alert('لا يمكن إدخال أكثر من 12 فترة دراسية')
+                    }
+                }
+                else{
+                    if(document.querySelectorAll('input')[0].value=='')
+                        document.querySelectorAll('input')[0].style.border='1px solid red';
+                    if(document.querySelectorAll('input')[1].value=='')
+                        document.querySelectorAll('input')[1].style.border='1px solid red';
+                    setTimeout(()=>{
+                        document.querySelectorAll('input')[0].style='';
+                        document.querySelectorAll('input')[1].style='';
+                    },500)
                 }
             })
             document.querySelectorAll('i')[0].addEventListener('click',()=>{
