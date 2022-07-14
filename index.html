@@ -81,6 +81,7 @@
                 display:flex;
                 box-shadow:5px 5px 60px #9b9b9b;
                 border-radius: 10px;
+                height:55vh;
             }
             section > div{
                 flex-basis: 50%;
@@ -281,7 +282,7 @@
             <li>يظهر لك جدول عشوائي في كل مرة</li>
         </ol>
         <script>
-            document.querySelector('section').querySelectorAll('div')[1].style =`height:${document.querySelector('section').querySelectorAll('div')[1].clientWidth}px` 
+            //document.querySelector('section').querySelectorAll('div')[1].style =`height:${document.querySelector('section').querySelectorAll('div')[1].clientWidth}px` 
             document.querySelector('#but').addEventListener('click',()=>{submit()})
             window.addEventListener('keydown',(e)=>{
                 if(e.key=='Enter'){
