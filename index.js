@@ -8,7 +8,7 @@ for(let i=1;i<localStorage.getItem('subs');i++){
     document.querySelector('#inputs').appendChild(document.querySelector('.sub1').cloneNode(true))
 }
 
-/* Creating radion inputs according to studying times number */
+/* Creating radio inputs according to studying times number */
 document.querySelectorAll('.days').forEach((x)=>{
     for(let i=0;i<x.querySelectorAll('div').length;i++){
         if(i==0){
@@ -42,11 +42,14 @@ but.addEventListener('click',myFunc)
 /********************************************************************/
 function myFunc(){
     let che = [];
+    /* Loop over subject fields and storage its names */
     labels.forEach((x)=>{
         if(x.querySelector('input').value!='')
         che.push(x.querySelector('input').value);
     })
+    /* the condition to start the process (use must enter the all names of the subjects)*/
     if(che.length==localStorage.getItem('subs')){
+        /* Removing the old table to add a new one */
         while(document.querySelector('#tables').firstChild){
         document.querySelector('#tables').removeChild(document.querySelector('#tables').firstChild);
         }
@@ -60,6 +63,7 @@ function myFunc(){
         let tues = [tues1,tues2,tues3,tues4,tues5,tues6,tues7,tues8,tues9,tues10,tues11,tues12];
         let wedn = [wedn1,wedn2,wedn3,wedn4,wedn5,wedn6,wedn7,wedn8,wedn9,wedn10,wedn11,wedn12];
         let thurs = [thurs1,thurs2,thurs3,thurs4,thurs5,thurs6,thurs7,thurs8,thurs9,thurs10,thurs11,thurs12];
+        
         /* Days for each subject */
         days.forEach((x)=>{
             let avilableDays = []
@@ -70,9 +74,10 @@ function myFunc(){
             })
             allAvailableDays.push(avilableDays);
         })
+        /* Loop over each subject days*/
         allAvailableDays.forEach((y,i)=>{
             for(let j=0;j<y.length;j++){
-                for(let k=0;k<12;k++){
+                for(let k=0;k<localStorage.getItem('times');k++){
                     if(y[j] == `السبت ${arr[k]}`)
                     sat[k].push(labels[i].querySelector('input').value)
                     if(y[j] == `الأحد ${arr[k]}`)
@@ -89,19 +94,22 @@ function myFunc(){
             }
         })
 
-
-        /* Filling the table */
+        /* Filling a new table */
+        /* Create the table */
         let table = document.createElement('table');
         table.innerHTML = '<tr> <th>الموعد</th> <th>السبت</th> <th>الأحد</th> <th>الإثنين</th> <th>الثلاثاء</th> <th>الأربعاء</th> <th>الخميس</th></tr>';
+        /* Adding rows to the table according to the times of study entered from the user */
         for(let i=0;i<parseInt(localStorage.getItem('times'));i++){
             let u =document.createElement('tr')
             u.innerHTML = `<td>${arr[i]}</td><td id="sat${i+1}">-</td> <td id="sun${i+1}">-</td> <td id="mon${i+1}">-</td> <td id="tues${i+1}">-</td> <td id="wedn${i+1}">-</td> <td id="thurs${i+1}">-</td>`
             table.appendChild(u)
         }
+        /* Adding the tabel to the page to be shown */
         document.querySelector('#tables').appendChild(table);
         let gay = [];
-        //let v = [random1,random2,random3,random4,random5,random6,random7,random8,random9,random10,random11,random12,random13,random14,random15,random16,random17,random18,random19,random20,random21,random22,random23,random24,random25,random26,random27,random28,random29,random30,random31,random32,random33,random34,random35,random36,random37,random38,random39,random40,random41,random42,random43,random44,random45,random46,random47,random48,random49,random50,random51,random52,random53,random54,random55,random56,random57,random58,random59,random60]
         let v=[]
+
+        /* Class to generate the random functions for each cell of the table */
         class Random{
             constructor(val,text){
                 this.id = text;
@@ -117,7 +125,9 @@ function myFunc(){
                     return;
                 }
             }
-        } 
+        }
+        
+        /* istatiating the "Random" class */
         for(let i=0;i<localStorage.getItem('times');i++){
             v.push((new Random(sat[i],`sat${i+1}`)).random)
         }
@@ -150,6 +160,7 @@ function myFunc(){
             v[i]();
         }
 
+        /* pettier only */
         document.querySelectorAll('td').forEach((x)=>{
             if(x.innerHTML == 'undefined'){
                 x.innerHTML ='-'
@@ -160,10 +171,12 @@ function myFunc(){
             if(x.innerText != '-')
             c.push(x.innerText)
         })
+        /* Checking if all the subjects are existed in the table */
         if(c.length==(parseInt(localStorage.getItem('subs'))+parseInt(localStorage.getItem('times')))){
             document.querySelector('#mark').scrollIntoView({behavior:'smooth'})
             return;
         }
+        /* If any subject isn't existed in the table the program callback the same function*/
         else{
             myFunc();
         }
