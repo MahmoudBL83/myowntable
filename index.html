@@ -282,7 +282,28 @@
         </ol>
         <script>
             document.querySelector('section').querySelectorAll('div')[1].style =`height:${document.querySelector('section').querySelectorAll('div')[1].clientWidth}px` 
-            document.querySelector('#but').addEventListener('click',()=>{
+            document.querySelector('#but').addEventListener('click',submit)
+            window.addEventListener('keydown',(e)=>{
+                if(e.key=='Enter'){
+                    submit()
+                }
+            })
+            document.querySelectorAll('i')[0].addEventListener('click',()=>{
+                open('https://www.facebook.com/profile.php?id=100010688892597')
+            })
+            document.querySelectorAll('i')[1].addEventListener('click',()=>{
+                open('https://www.linkedin.com/in/mahmoud-bahaa-482117228/')
+            })
+            document.querySelector('#l').querySelector('div').addEventListener('click',()=>{
+                document.querySelector('ol').classList.remove('hidden')
+                document.querySelector('section').classList.add('hidden')
+            })
+            document.querySelector('ol').querySelector('span').addEventListener('click',()=>{
+                document.querySelector('ol').classList.add('hidden')
+                document.querySelector('section').classList.remove('hidden')
+            })
+
+            var submit = ()=>{
                 if(document.querySelectorAll('input')[0].value!=''&&document.querySelectorAll('input')[1].value!=''){
                     if(document.querySelectorAll('input')[1].value<=12){
                         localStorage.setItem('subs',document.querySelectorAll('input')[0].value)
@@ -303,21 +324,7 @@
                         document.querySelectorAll('input')[1].style='';
                     },500)
                 }
-            })
-            document.querySelectorAll('i')[0].addEventListener('click',()=>{
-                open('https://www.facebook.com/profile.php?id=100010688892597')
-            })
-            document.querySelectorAll('i')[1].addEventListener('click',()=>{
-                open('https://www.linkedin.com/in/mahmoud-bahaa-482117228/')
-            })
-            document.querySelector('#l').querySelector('div').addEventListener('click',()=>{
-                document.querySelector('ol').classList.remove('hidden')
-                document.querySelector('section').classList.add('hidden')
-            })
-            document.querySelector('ol').querySelector('span').addEventListener('click',()=>{
-                document.querySelector('ol').classList.add('hidden')
-                document.querySelector('section').classList.remove('hidden')
-            })
+            }
         </script>
     </body>
 </html>
